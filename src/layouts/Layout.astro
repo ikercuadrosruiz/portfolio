@@ -66,7 +66,7 @@ const jsonLd = buildPortfolioSchema(siteBase.href);
             set:html={JSON.stringify(jsonLd)}
         />
         <noscript>
-            <style>
+            <style is:inline>
                 .scene { height: auto; min-height: 70vh; padding: 5rem 1.5rem; flex-direction: column; gap: 2rem; }
                 .data-stage-frame, .data-stage-overlay { position: relative; opacity: 1; height: auto; padding: 2rem 1.5rem; }
                 .data-stage-header, .beat, .ui-header, .ui-block, .judo-copy { position: relative; opacity: 1; transform: none; }
