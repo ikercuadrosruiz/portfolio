@@ -1,0 +1,373 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import ProjectsSection from "../components/ProjectsSection.astro";
+---
+
+<Layout>
+	<Navbar />
+
+	<main id="top">
+		<!-- ACTOS 1 Y 2 UNIFICADOS: EL CAOS -> LA ESTRUCTURA (1 SOLO CANVAS) -->
+		<section class="scene act-1-2" aria-label="Introducción: Ciencia de Datos, IA y Diseño Web en València">
+			<div class="data-stage-frame" aria-hidden="true"></div>
+
+			<canvas id="particles-canvas" aria-hidden="true"></canvas>
+
+			<div class="hero-inner">
+				<p class="mono accent">01 / Ciencia de Datos, IA &amp; Diseño Web · València</p>
+				<h1 class="hero-title">
+					Convierto datos complejos en experiencias digitales claras.
+				</h1>
+				<p class="mono" style="margin-top: 2rem; color: var(--muted);">
+					↓ Haz scroll para explorar
+				</p>
+			</div>
+
+			<div class="data-stage-overlay">
+				<div class="data-stage-header">
+					<span class="mono" style="color: var(--muted);">
+						02 / ESTRUCTURA &amp; REGRESIÓN
+					</span>
+					<span id="data-metric" class="mono accent">
+						RUIDO · R² = 0.04
+					</span>
+				</div>
+
+				<div class="beat beat-1">
+					<h2>Los datos sin contexto son solo ruido.</h2>
+				</div>
+
+				<div class="beat beat-2">
+					<h2>
+						Mi trabajo empieza encontrando el{" "}
+						<span class="accent">patrón</span>.
+					</h2>
+				</div>
+			</div>
+		</section>
+
+		<!-- ACTO 3: LA FORMA (DISEÑO WEB) -->
+		<section class="scene act-3">
+			<div class="ui-frame" id="ui-frame" data-view="design">
+				<!-- Guías de 12 columnas activables por el usuario -->
+				<div class="ui-grid-overlay" aria-hidden="true">
+					<span></span><span></span><span></span><span></span>
+					<span></span><span></span><span></span><span></span>
+					<span></span><span></span><span></span><span></span>
+				</div>
+
+				<div class="ui-header">
+					<div>
+						<p class="mono accent">03 / Diseño de Interfaces</p>
+						<h2 class="ui-title">
+							Un modelo brillante no sirve si nadie puede usarlo.
+						</h2>
+					</div>
+					<div class="ui-header-controls">
+						<div
+							class="ui-view-switcher"
+							role="tablist"
+							aria-label="Modo de inspección de la interfaz"
+						>
+							<button
+								type="button"
+								class="ui-view-btn mono is-active"
+								data-ui-view="design"
+								aria-selected="true"
+							>
+								Diseño final
+							</button>
+							<button
+								type="button"
+								class="ui-view-btn mono"
+								data-ui-view="grid"
+								aria-selected="false"
+							>
+								Columnas
+							</button>
+							<button
+								type="button"
+								class="ui-view-btn mono"
+								data-ui-view="inspect"
+								aria-selected="false"
+							>
+								Medidas
+							</button>
+							<button
+								type="button"
+								class="ui-view-btn mono"
+								data-ui-view="wireframe"
+								aria-selected="false"
+							>
+								Boceto
+							</button>
+						</div>
+					</div>
+				</div>
+
+				<!-- BLOQUE 1: Comparador claro (En bruto vs Mi diseño) -->
+				<div class="ui-block ui-block--product" data-grid-cols="col 1–7">
+					<span class="ui-inspect-badge mono" aria-hidden="true"></span>
+					<div class="ui-block-top">
+						<span class="mono">01 · Claridad al instante</span>
+						<div class="ui-segmented" id="ui-segmented" role="tablist" aria-label="Comparar vista de datos">
+							<button
+								type="button"
+								class="ui-seg-btn mono is-active"
+								data-ui-mode="clear"
+								aria-selected="true"
+							>
+								Mi diseño
+							</button>
+							<button
+								type="button"
+								class="ui-seg-btn ui-seg-btn--hint mono"
+								data-ui-mode="raw"
+								aria-selected="false"
+							>
+								<span class="ui-pulse-dot" aria-hidden="true"></span>
+								Datos en bruto
+							</button>
+						</div>
+					</div>
+
+					<div class="ui-block-lead">
+						<h3 class="ui-card-title">
+							De datos complejos a decisiones en 3 segundos.
+						</h3>
+						<p class="ui-desc">
+							Pulsa el selector para ver cómo traduzco números difíciles de leer en una interfaz que cualquiera entiende a la primera.
+						</p>
+					</div>
+
+					<div class="ui-demo-stage" id="ui-demo-stage" data-mode="clear">
+						<!-- Vista 1: Interfaz clara (por defecto) -->
+						<div class="ui-demo-clear">
+							<div class="ui-demo-summary">
+								<span class="mono accent">Conclusión clara</span>
+								<strong class="ui-demo-headline">
+									+18% más demanda prevista este mes
+								</strong>
+								<p class="ui-demo-action">
+									Recomendación: reforzar disponibilidad los viernes por la tarde.
+								</p>
+							</div>
+
+							<div class="ui-mini-bars" aria-hidden="true">
+								<div class="ui-mini-col">
+									<span class="ui-mini-bar" style="--h: 42%;"></span>
+									<span class="mono">Ene</span>
+								</div>
+								<div class="ui-mini-col">
+									<span class="ui-mini-bar" style="--h: 50%;"></span>
+									<span class="mono">Feb</span>
+								</div>
+								<div class="ui-mini-col">
+									<span class="ui-mini-bar" style="--h: 46%;"></span>
+									<span class="mono">Mar</span>
+								</div>
+								<div class="ui-mini-col">
+									<span class="ui-mini-bar" style="--h: 62%;"></span>
+									<span class="mono">Abr</span>
+								</div>
+								<div class="ui-mini-col">
+									<span class="ui-mini-bar" style="--h: 74%;"></span>
+									<span class="mono">May</span>
+								</div>
+								<div class="ui-mini-col is-peak">
+									<span class="ui-mini-bar" style="--h: 95%;"></span>
+									<span class="mono accent">Jun</span>
+								</div>
+							</div>
+						</div>
+
+						<!-- Vista 2: Datos en bruto (al alternar) -->
+						<div class="ui-demo-raw" aria-hidden="true">
+							<div class="ui-raw-line">
+								<span>row_0418</span><span>ts=2026-06-05</span><span>y_hat=1.1842</span><span>ci=[1.12, 1.24]</span><span>err=0.021</span>
+							</div>
+							<div class="ui-raw-line">
+								<span>row_0419</span><span>ts=2026-06-12</span><span>y_hat=1.1910</span><span>ci=[1.13, 1.25]</span><span>err=0.019</span>
+							</div>
+							<div class="ui-raw-line">
+								<span>row_0420</span><span>ts=2026-06-19</span><span>y_hat=1.1765</span><span>ci=[1.11, 1.23]</span><span>err=0.024</span>
+							</div>
+							<div class="ui-raw-line">
+								<span>row_0421</span><span>ts=2026-06-26</span><span>y_hat=1.2048</span><span>ci=[1.14, 1.27]</span><span>err=0.018</span>
+							</div>
+							<p class="ui-raw-note">
+								↑ Así suelen quedarse muchos análisis: correctos, pero imposibles de usar rápido.
+							</p>
+						</div>
+					</div>
+				</div>
+
+				<!-- BLOQUE 2: Velocidad y fluidez en lenguaje claro -->
+				<div class="ui-block ui-block--perf" data-grid-cols="col 8–12">
+					<span class="ui-inspect-badge mono" aria-hidden="true"></span>
+					<div class="ui-block-top">
+						<span class="mono accent">02 · Rendimiento</span>
+						<span class="ui-pill ui-pill--live mono">
+							<span class="ui-live-dot" aria-hidden="true"></span>
+							EN VIVO
+						</span>
+					</div>
+
+					<div class="ui-perf-score">
+						<p id="ui-score" class="ui-score-num">60 FPS</p>
+						<p class="ui-desc">
+							Webs rápidas y fluidas que cargan al instante, tanto en ordenador como en móvil.
+						</p>
+					</div>
+
+					<div class="ui-bars">
+						<div class="ui-bar-item">
+							<div class="ui-bar-meta mono">
+								<span>Velocidad de carga</span>
+								<span>&lt; 0.5 s</span>
+							</div>
+							<div class="ui-bar-track">
+								<span class="ui-bar-fill" style="--target-scale: 0.96;"></span>
+							</div>
+						</div>
+						<div class="ui-bar-item">
+							<div class="ui-bar-meta mono">
+								<span>Fluidez al navegar</span>
+								<span id="ui-fps-meta">60 FPS</span>
+							</div>
+							<div class="ui-bar-track">
+								<span class="ui-bar-fill is-accent" style="--target-scale: 1;"></span>
+							</div>
+						</div>
+						<div class="ui-bar-item">
+							<div class="ui-bar-meta mono">
+								<span>Diseño adaptable</span>
+								<span>Móvil y PC</span>
+							</div>
+							<div class="ui-bar-track">
+								<span class="ui-bar-fill" style="--target-scale: 1;"></span>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- BLOQUE 3: Orden visual y sistema de diseño -->
+				<div class="ui-block ui-block--tokens" data-grid-cols="col 1–5">
+					<span class="ui-inspect-badge mono" aria-hidden="true"></span>
+					<div class="ui-block-top">
+						<span class="mono">03 · Orden visual</span>
+						<span class="mono" style="color: var(--muted);">COHERENCIA</span>
+					</div>
+
+					<div class="ui-block-lead">
+						<h3 class="ui-card-title">
+							Color, tipografía y espacio con intención.
+						</h3>
+						<p class="ui-desc">
+							Sin adornos de más: cada detalle guía la mirada hacia lo importante.
+						</p>
+					</div>
+
+					<div class="ui-tokens-content">
+						<div class="ui-swatches">
+							<div class="ui-swatch">
+								<span class="ui-swatch-chip" style="background: #f7f7f5;"></span>
+								<span class="mono">Fondo</span>
+							</div>
+							<div class="ui-swatch">
+								<span class="ui-swatch-chip" style="background: #ecece8;"></span>
+								<span class="mono">Tarjeta</span>
+							</div>
+							<div class="ui-swatch">
+								<span class="ui-swatch-chip" style="background: #111111;"></span>
+								<span class="mono">Texto</span>
+							</div>
+							<div class="ui-swatch">
+								<span class="ui-swatch-chip" style="background: #1d4ed8;"></span>
+								<span class="mono accent">Acento</span>
+							</div>
+						</div>
+
+						<div class="ui-type-row">
+							<div class="ui-type-sample">
+								<span class="ui-type-glyph">Aa</span>
+								<span class="mono" style="color: var(--muted);">Titulares limpios</span>
+							</div>
+							<div class="ui-type-sample">
+								<span class="ui-type-glyph ui-type-glyph--mono">01</span>
+								<span class="mono" style="color: var(--muted);">Datos legibles</span>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- BLOQUE 4: Flujo híbrido de principio a fin -->
+				<div class="ui-block ui-block--pipeline" data-grid-cols="col 6–12">
+					<span class="ui-inspect-badge mono" aria-hidden="true"></span>
+					<div class="ui-block-top">
+						<span class="mono">04 · De principio a fin</span>
+						<span class="mono accent">PERFIL HÍBRIDO</span>
+					</div>
+
+					<div class="ui-block-lead">
+						<h3 class="ui-card-title">
+							Un solo perfil entre los datos y el usuario final.
+						</h3>
+					</div>
+
+					<div class="ui-pipeline-steps">
+						<div class="ui-step">
+							<span class="mono" style="color: var(--muted);">01</span>
+							<strong>Datos</strong>
+							<span class="ui-step-sub">Entiendo el problema</span>
+						</div>
+						<span class="ui-step-arrow mono" aria-hidden="true">→</span>
+						<div class="ui-step">
+							<span class="mono" style="color: var(--muted);">02</span>
+							<strong>Análisis</strong>
+							<span class="ui-step-sub">Encuentro el patrón</span>
+						</div>
+						<span class="ui-step-arrow mono" aria-hidden="true">→</span>
+						<div class="ui-step is-highlight">
+							<span class="mono accent">03</span>
+							<strong>Interfaz</strong>
+							<span class="ui-step-sub">Lo hago fácil de usar</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- ACTO 4: EL EQUILIBRIO (JUDO) -->
+		<section class="scene act-4">
+			<div class="judo-frame">
+				<canvas id="judo-canvas"></canvas>
+
+				<div class="judo-overlay">
+					<div style="display: flex; justify-content: space-between;">
+						<span class="mono">04 / Seiryoku Zenyo</span>
+						<span class="mono">TÉCNICA &amp; EQUILIBRIO</span>
+					</div>
+
+					<div class="judo-copy">
+						<h2>Máxima eficiencia. Cuidado en cada detalle.</h2>
+						<p style="opacity: 0.85; line-height: 1.6;">
+							Fuera de la pantalla, entreno judo. En el tatami
+							descubrí que la precisión nunca es casualidad: nace
+							de la técnica, el equilibrio y el mimo artesanal que
+							aplico a cada modelo y a cada interfaz.
+						</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- ACTO 5: LA PRUEBA (PROYECTOS, HACKATONES Y CONTACTO) -->
+		<ProjectsSection />
+	</main>
+
+	<script>
+		import "../scripts/scrollEngine.js";
+	</script>
+</Layout>

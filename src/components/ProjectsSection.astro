@@ -1,0 +1,479 @@
+---
+import {
+    BPI_DEMO_QUERIES,
+    WEB_PROJECTS,
+    PRIVATE_ANALYSES,
+    HACKATHONS,
+    CONTACT,
+} from '../data/projects.js';
+
+const valocoach = WEB_PROJECTS.find((p) => p.id === 'valocoach');
+const clientWebs = WEB_PROJECTS.filter((p) => p.id !== 'valocoach');
+const firstQuery = BPI_DEMO_QUERIES[0];
+---
+
+<section id="proyectos" class="act-5">
+    <div class="projects-head">
+        <div>
+            <p class="mono accent">05 / Trabajo Seleccionado</p>
+            <h2 class="projects-title">
+                Menos teoría. Explora lo que construyo.
+            </h2>
+        </div>
+
+        <div class="projects-filter" role="tablist" aria-label="Filtrar proyectos por área">
+            <button
+                type="button"
+                class="filter-btn mono is-active"
+                data-project-filter="all"
+                aria-selected="true"
+            >
+                Todos
+            </button>
+            <button
+                type="button"
+                class="filter-btn mono"
+                data-project-filter="ai"
+                aria-selected="false"
+            >
+                IA &amp; Datos
+            </button>
+            <button
+                type="button"
+                class="filter-btn mono"
+                data-project-filter="web"
+                aria-selected="false"
+            >
+                Desarrollo Web
+            </button>
+        </div>
+    </div>
+
+    <div class="projects-bento" id="projects-bento">
+        <!-- 1. BPI VALÈNCIA: Tarjeta protagonista con mini-demo interactiva -->
+        <article class="project-card project-card--featured" data-categories="ai">
+            <div class="featured-copy">
+                <div class="project-card-top">
+                    <span class="mono project-tag project-tag--accent">IA &amp; Datos · NLP</span>
+                    <span class="mono project-status">MINI-DEMO INTERACTIVA</span>
+                </div>
+
+                <div>
+                    <h3 class="project-card-title">
+                        BPI València — Buscador Plenario Inteligente
+                    </h3>
+                    <p class="project-card-desc">
+                        Transcribe y separa por orador (diarización) los vídeos de los plenos del
+                        Ayuntamiento de València para conversar con un agente que responde en
+                        segundos citando el fragmento exacto, sin ver horas de sesión.
+                    </p>
+                </div>
+
+                <div class="project-chips">
+                    <span class="mono project-chip">Transcripción</span>
+                    <span class="mono project-chip">Diarización</span>
+                    <span class="mono project-chip">Agente Conversacional</span>
+                </div>
+            </div>
+
+            <div class="bpi-demo">
+                <div class="bpi-demo-top">
+                    <span class="mono" style="color: var(--muted);">
+                        Prueba una pregunta al agente
+                    </span>
+                    <div class="bpi-query-pills" id="bpi-query-pills">
+                        {BPI_DEMO_QUERIES.map((q, idx) => (
+                            <button
+                                type="button"
+                                class={`bpi-pill mono ${idx === 0 ? 'is-active' : ''} ${idx === 1 ? 'bpi-pill--hint' : ''}`}
+                                data-bpi-id={q.id}
+                                aria-pressed={idx === 0 ? 'true' : 'false'}
+                            >
+                                {idx === 1 && <span class="ui-pulse-dot" aria-hidden="true"></span>}
+                                {q.label}
+                            </button>
+                        ))}
+                    </div>
+                </div>
+
+                <div class="bpi-chat-box">
+                    <div class="bpi-question">
+                        <span class="mono" style="color: var(--muted);">Pregunta</span>
+                        <p id="bpi-question-text">{firstQuery.question}</p>
+                    </div>
+
+                    <div class="bpi-answer">
+                        <div class="bpi-answer-head">
+                            <span class="mono accent">Agente BPI</span>
+                            <span id="bpi-saved-text" class="mono bpi-saved">
+                                {firstQuery.saved}
+                            </span>
+                        </div>
+                        <p id="bpi-answer-text">{firstQuery.answer}</p>
+                        <div class="bpi-source mono">
+                            <span id="bpi-speaker-text">{firstQuery.speaker}</span>
+                            <span id="bpi-time-text" class="bpi-timestamp">
+                                ▶ {firstQuery.timestamp}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <!-- 2. ANÁLISIS ECOCARDIOGRÁFICO CON IA — HOSPITAL LA FE -->
+        <article class="project-card project-card--research" data-categories="ai">
+            <div class="project-card-top">
+                <span class="mono project-tag project-tag--accent">IA &amp; Salud · Investigación</span>
+                <span class="mono project-status">HOSPITAL LA FE</span>
+            </div>
+
+            <div>
+                <h3 class="project-card-title">
+                    Análisis Ecocardiográfico con IA — Hospital La Fe
+                </h3>
+                <p class="project-card-desc">
+                    Proyecto de mejora de modelos de visión médica en el Hospital Universitari i
+                    Politècnic La Fe (València). Partiendo de <strong>PanEcho</strong> para la
+                    extracción de variables ecocardiográficas, entreno modelos adicionales sobre
+                    su última capa logrando mejoras consistentes en las predicciones.
+                </p>
+            </div>
+
+            <div class="echo-pipeline" aria-label="Flujo de refinamiento sobre PanEcho">
+                <div class="echo-node">
+                    <span class="mono" style="color: var(--muted);">01 · Base</span>
+                    <strong>PanEcho</strong>
+                    <span>Extracción de la última capa</span>
+                </div>
+                <span class="mono echo-arrow" aria-hidden="true">→</span>
+                <div class="echo-node">
+                    <span class="mono" style="color: var(--muted);">02 · Refinamiento</span>
+                    <strong>Modelos propios</strong>
+                    <span>Reentrenamiento sobre representaciones</span>
+                </div>
+                <span class="mono echo-arrow" aria-hidden="true">→</span>
+                <div class="echo-node is-highlight">
+                    <span class="mono accent">03 · Resultado</span>
+                    <strong>Salidas mejoradas</strong>
+                    <span>Mayor precisión en variables clínicas</span>
+                </div>
+            </div>
+
+            <div class="project-chips">
+                <span class="mono project-chip">Deep Learning</span>
+                <span class="mono project-chip">PanEcho</span>
+                <span class="mono project-chip">Transfer Learning</span>
+            </div>
+        </article>
+
+        <!-- 3. VALOCOACH AI (Híbrido IA + Web en vivo) -->
+        {valocoach && (
+            <article
+                class="project-card project-card--web"
+                data-categories={valocoach.categories.join(' ')}
+            >
+                <a
+                    href={valocoach.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="browser-mockup"
+                    aria-label={`Abrir ${valocoach.title}`}
+                >
+                    <div class="browser-bar">
+                        <div class="browser-dots" aria-hidden="true">
+                            <span></span><span></span><span></span>
+                        </div>
+                        <span class="browser-url mono">{valocoach.domain}</span>
+                    </div>
+                    <div class="browser-viewport">
+                        <img
+                            src={valocoach.image}
+                            alt={valocoach.imageAlt}
+                            width={valocoach.imageWidth}
+                            height={valocoach.imageHeight}
+                            loading="lazy"
+                            decoding="async"
+                        />
+                    </div>
+                </a>
+
+                <div class="project-card-body">
+                    <div class="project-card-top">
+                        <span class="mono project-tag project-tag--accent">{valocoach.tag}</span>
+                        <span class="mono project-status">EN PRODUCCIÓN</span>
+                    </div>
+
+                    <h3 class="project-card-title">{valocoach.title}</h3>
+                    <p class="project-card-desc">{valocoach.description}</p>
+
+                    <div class="project-card-foot">
+                        <div class="project-chips">
+                            {valocoach.stack.map((item) => (
+                                <span class="mono project-chip">{item}</span>
+                            ))}
+                        </div>
+                        <a
+                            href={valocoach.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="project-link mono accent"
+                        >
+                            {valocoach.cta} ↗
+                        </a>
+                    </div>
+                </div>
+            </article>
+        )}
+
+        <!-- 4 y 5. WEBS EN PRODUCCIÓN PARA CLIENTES (Valyesa y Judo Club Canet) -->
+        {clientWebs.map((project) => (
+            <article
+                class="project-card project-card--web"
+                data-categories={project.categories.join(' ')}
+            >
+                <a
+                    href={project.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="browser-mockup"
+                    aria-label={`Abrir ${project.title}`}
+                >
+                    <div class="browser-bar">
+                        <div class="browser-dots" aria-hidden="true">
+                            <span></span><span></span><span></span>
+                        </div>
+                        <span class="browser-url mono">{project.domain}</span>
+                    </div>
+                    <div class="browser-viewport">
+                        <img
+                            src={project.image}
+                            alt={project.imageAlt}
+                            width={project.imageWidth}
+                            height={project.imageHeight}
+                            loading="lazy"
+                            decoding="async"
+                        />
+                    </div>
+                </a>
+
+                <div class="project-card-body">
+                    <div class="project-card-top">
+                        <span class="mono project-tag">{project.tag}</span>
+                        <span class="mono project-status">CLIENTE REAL</span>
+                    </div>
+
+                    <h3 class="project-card-title">{project.title}</h3>
+                    <p class="project-card-desc">{project.description}</p>
+
+                    <div class="project-card-foot">
+                        <div class="project-chips">
+                            {project.stack.map((item) => (
+                                <span class="mono project-chip">{item}</span>
+                            ))}
+                        </div>
+                        <a
+                            href={project.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="project-link mono accent"
+                        >
+                            {project.cta} ↗
+                        </a>
+                    </div>
+                </div>
+            </article>
+        ))}
+    </div>
+
+    <!-- Franja discreta de otros análisis técnicos / BI -->
+    <div class="private-strip" data-categories="ai">
+        <span class="mono private-strip-label">También en análisis técnico &amp; BI</span>
+        <div class="private-strip-items">
+            {PRIVATE_ANALYSES.map((item) => (
+                <div class="private-item">
+                    <strong>{item.title}</strong>
+                    <span>{item.detail}</span>
+                </div>
+            ))}
+        </div>
+    </div>
+
+    <!-- CAPA 2: Hackatones y Reconocimientos (Índice editorial desplegable) -->
+    <div class="awards-section">
+        <div class="awards-head">
+            <div>
+                <p class="mono accent">Reconocimientos &amp; Hackatones</p>
+                <h3 class="awards-title">
+                    Retos reales bajo presión, validados por jurado.
+                </h3>
+            </div>
+            <span class="mono awards-summary">
+                2× GANADOR · FINALISTA LEGALTECH · SALUD &amp; IA
+            </span>
+        </div>
+
+        <div class="awards-list" id="awards-list">
+            {HACKATHONS.map((item, idx) => (
+                <details class="award-row" open={idx === 0}>
+                    <summary class="award-summary">
+                        <div class="award-main">
+                            <span class={`mono award-badge award-badge--${item.badgeType}`}>
+                                {item.badge}
+                            </span>
+                            <div class="award-titles">
+                                <strong>{item.title}</strong>
+                                <span class="award-one-liner">{item.summary}</span>
+                            </div>
+                        </div>
+                        <div class="award-right">
+                            <span class="mono award-meta">{item.meta}</span>
+                            <span class="award-chevron" aria-hidden="true"></span>
+                        </div>
+                    </summary>
+
+                    <div class="award-details">
+                        <div class="award-col">
+                            <span class="mono" style="color: var(--muted);">El reto</span>
+                            <p>{item.challenge}</p>
+                        </div>
+                        <div class="award-col">
+                            <span class="mono" style="color: var(--muted);">Enfoque</span>
+                            <p>{item.approach}</p>
+                        </div>
+                        <div class="award-col">
+                            <span class="mono accent">Resultado</span>
+                            <p>{item.result}</p>
+                        </div>
+                    </div>
+                </details>
+            ))}
+        </div>
+    </div>
+
+    <!-- CAPA 3: Contacto -->
+    <footer id="contacto" class="contact-footer">
+        <div class="contact-main">
+            <p class="mono accent">¿Tienes un proyecto o un reto en mente?</p>
+            <div class="contact-email-row">
+                <a href={`mailto:${CONTACT.email}`} class="contact-email">
+                    {CONTACT.email}
+                </a>
+                <button
+                    type="button"
+                    class="copy-email-btn mono"
+                    data-copy-email={CONTACT.email}
+                >
+                    Copiar correo
+                </button>
+            </div>
+        </div>
+
+        <div class="contact-links">
+            <a
+                href={CONTACT.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="contact-social mono"
+            >
+                LinkedIn ↗
+            </a>
+            <a
+                href={CONTACT.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="contact-social contact-social--muted mono"
+            >
+                GitHub ↗
+            </a>
+            <span class="mono contact-location">{CONTACT.location}</span>
+        </div>
+    </footer>
+</section>
+
+<script>
+    import { BPI_DEMO_QUERIES } from '../data/projects.js';
+
+    // 1. Filtro de proyectos (Todos / IA & Datos / Desarrollo Web)
+    const filterBtns = document.querySelectorAll('[data-project-filter]');
+    const projectItems = document.querySelectorAll('#projects-bento [data-categories], .private-strip[data-categories]');
+
+    filterBtns.forEach((btn) => {
+        btn.addEventListener('click', () => {
+            const filter = btn.getAttribute('data-project-filter') || 'all';
+            filterBtns.forEach((b) => {
+                const active = b === btn;
+                b.classList.toggle('is-active', active);
+                b.setAttribute('aria-selected', String(active));
+            });
+
+            projectItems.forEach((el) => {
+                const cats = (el.getAttribute('data-categories') || '').split(' ');
+                const show = filter === 'all' || cats.includes(filter);
+                el.classList.toggle('is-hidden', !show);
+            });
+        });
+    });
+
+    // 2. Mini-demo interactiva de BPI València
+    const bpiBtns = document.querySelectorAll('[data-bpi-id]');
+    const bpiPillsWrap = document.getElementById('bpi-query-pills');
+    const qEl = document.getElementById('bpi-question-text');
+    const aEl = document.getElementById('bpi-answer-text');
+    const sEl = document.getElementById('bpi-speaker-text');
+    const tEl = document.getElementById('bpi-time-text');
+    const savedEl = document.getElementById('bpi-saved-text');
+
+    bpiBtns.forEach((btn) => {
+        btn.addEventListener('click', () => {
+            const id = btn.getAttribute('data-bpi-id');
+            const query = BPI_DEMO_QUERIES.find((item) => item.id === id);
+            if (!query) return;
+
+            if (bpiPillsWrap) bpiPillsWrap.classList.add('has-interacted');
+            bpiBtns.forEach((b) => {
+                const active = b === btn;
+                b.classList.toggle('is-active', active);
+                b.setAttribute('aria-pressed', String(active));
+            });
+
+            if (qEl) qEl.textContent = query.question;
+            if (aEl) aEl.textContent = query.answer;
+            if (sEl) sEl.textContent = query.speaker;
+            if (tEl) tEl.textContent = `▶ ${query.timestamp}`;
+            if (savedEl) savedEl.textContent = query.saved;
+        });
+    });
+
+    // 3. Acordeón limpio en Hackatones (solo uno abierto a la vez)
+    const awardRows = document.querySelectorAll('#awards-list details.award-row');
+    awardRows.forEach((row) => {
+        row.addEventListener('toggle', () => {
+            if (!row.open) return;
+            awardRows.forEach((other) => {
+                if (other !== row && other.open) other.open = false;
+            });
+        });
+    });
+
+    // 4. Botón de copiar correo en un clic
+    const copyBtn = document.querySelector('[data-copy-email]');
+    if (copyBtn) {
+        copyBtn.addEventListener('click', async () => {
+            const email = copyBtn.getAttribute('data-copy-email');
+            if (!email) return;
+            try {
+                await navigator.clipboard.writeText(email);
+                const prev = copyBtn.textContent;
+                copyBtn.textContent = '¡Copiado!';
+                copyBtn.classList.add('is-copied');
+                setTimeout(() => {
+                    copyBtn.textContent = prev || 'Copiar correo';
+                    copyBtn.classList.remove('is-copied');
+                }, 2000);
+            } catch {
+                window.location.href = `mailto:${email}`;
+            }
+        });
+    }
+</script>
