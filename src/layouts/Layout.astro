@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import Analytics from "@vercel/analytics/astro";
 import { buildPortfolioSchema } from "../data/seoSchema.js";
 
 interface Props {
@@ -83,6 +84,7 @@ const jsonLd = buildPortfolioSchema(siteBase.href);
                 .judo-frame { clip-path: none; min-height: 60vh; }
             </style>
         </noscript>
+        <Analytics />
     </head>
     <body>
         <slot />
