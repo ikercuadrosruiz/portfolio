@@ -81,7 +81,7 @@ if (uiFrameEl && uiViewBtns.length) {
             uiViewBtns.forEach((b) => {
                 const active = b === btn;
                 b.classList.toggle('is-active', active);
-                b.setAttribute('aria-selected', String(active));
+                b.setAttribute('aria-pressed', String(active));
             });
 
             if (view === 'inspect' || view === 'wireframe') {
@@ -136,7 +136,7 @@ if (uiDemoStage && uiModeBtns.length) {
             uiModeBtns.forEach((b) => {
                 const active = b === btn;
                 b.classList.toggle('is-active', active);
-                b.setAttribute('aria-selected', String(active));
+                b.setAttribute('aria-pressed', String(active));
             });
 
             if (mode === 'clear') {

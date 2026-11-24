@@ -1,0 +1,28 @@
+# Iker Cuadros Ruiz — Ciencia de Datos, IA y Diseño Web (València)
+
+> Portfolio personal de Iker Cuadros Ruiz, perfil híbrido de Científico de Datos, Inteligencia Artificial aplicada y Diseñador Web editorial basado en València (España).
+
+## Información principal
+- Web oficial: https://ikercuadrosruiz.com/
+- Contacto: ikercuadruizz@gmail.com
+- LinkedIn: https://www.linkedin.com/in/iker-cuadros-ruiz/
+- GitHub: https://github.com/ikercuadrosruiz
+- Ubicación: València, España (disponible presencial y remoto)
+
+## Especialidades
+- Ciencia de Datos, Machine Learning, Deep Learning y Procesamiento del Lenguaje Natural (NLP / LLMs).
+- Diseño y desarrollo web editorial de alto rendimiento (Astro, HTML/CSS/JS, interfaces claras y rápidas).
+- Visualización de datos y cuadros de mando (Power BI, analítica aplicada a negocio y sector público).
+
+## Proyectos destacados
+- [BPI València — Buscador Plenario Inteligente](https://ikercuadrosruiz.com/#proyectos): Transcripción, diarización por orador y agente conversacional para consultar en segundos los plenos del Ayuntamiento de València.
+- [Análisis Ecocardiográfico con IA — Hospital La Fe](https://ikercuadrosruiz.com/#proyectos): Mejora de predicciones clínicas partiendo de la última capa del modelo PanEcho en el Hospital Universitari i Politècnic La Fe (València).
+- [ValoCoach AI](https://valocoach-ai.vercel.app/): Analista IA de partidas de Valorant que identifica errores recurrentes y propone mejoras personalizadas.
+- [Valyesa — Yeso y Alta Decoración](https://www.valyesa.com/): Diseño y desarrollo de web corporativa enfocada en oficio artesanal y captación de clientes locales.
+- [Judo Club Canet](https://judoclubcanet.odoo.com/): Web oficial del club con horarios y arquitectura clara.
+
+## Reconocimientos y Hackatones
+- 1er Premio — Campus Salud Gandía (30h): Visor de simulación de impacto económico y social de inversiones municipales contra la obesidad.
+- Ganador — València Semicon Startup Lab: Interfaces físicas, hápticas y sensoriales para cirugías endovasculares.
+- Finalista — LLMthon Legal 2026 (Grant Thornton España, Càtedra LegalTech & IA Minsait-UV, ETSE-UV): Automatización con LLMs de comparables y trazabilidad documental.
+- Participante — Dedalus Datathon València: Agente conversacional clínico para identificar cohortes de pacientes crónicos.

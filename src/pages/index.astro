@@ -67,14 +67,14 @@ import ProjectsSection from "../components/ProjectsSection.astro";
 					<div class="ui-header-controls">
 						<div
 							class="ui-view-switcher"
-							role="tablist"
+							role="group"
 							aria-label="Modo de inspección de la interfaz"
 						>
 							<button
 								type="button"
 								class="ui-view-btn mono is-active"
 								data-ui-view="design"
-								aria-selected="true"
+								aria-pressed="true"
 							>
 								Diseño final
 							</button>
@@ -82,7 +82,7 @@ import ProjectsSection from "../components/ProjectsSection.astro";
 								type="button"
 								class="ui-view-btn mono"
 								data-ui-view="grid"
-								aria-selected="false"
+								aria-pressed="false"
 							>
 								Columnas
 							</button>
@@ -90,7 +90,7 @@ import ProjectsSection from "../components/ProjectsSection.astro";
 								type="button"
 								class="ui-view-btn mono"
 								data-ui-view="inspect"
-								aria-selected="false"
+								aria-pressed="false"
 							>
 								Medidas
 							</button>
@@ -98,7 +98,7 @@ import ProjectsSection from "../components/ProjectsSection.astro";
 								type="button"
 								class="ui-view-btn mono"
 								data-ui-view="wireframe"
-								aria-selected="false"
+								aria-pressed="false"
 							>
 								Boceto
 							</button>
@@ -111,12 +111,12 @@ import ProjectsSection from "../components/ProjectsSection.astro";
 					<span class="ui-inspect-badge mono" aria-hidden="true"></span>
 					<div class="ui-block-top">
 						<span class="mono">01 · Claridad al instante</span>
-						<div class="ui-segmented" id="ui-segmented" role="tablist" aria-label="Comparar vista de datos">
+						<div class="ui-segmented" id="ui-segmented" role="group" aria-label="Comparar vista de datos">
 							<button
 								type="button"
 								class="ui-seg-btn mono is-active"
 								data-ui-mode="clear"
-								aria-selected="true"
+								aria-pressed="true"
 							>
 								Mi diseño
 							</button>
@@ -124,7 +124,7 @@ import ProjectsSection from "../components/ProjectsSection.astro";
 								type="button"
 								class="ui-seg-btn ui-seg-btn--hint mono"
 								data-ui-mode="raw"
-								aria-selected="false"
+								aria-pressed="false"
 							>
 								<span class="ui-pulse-dot" aria-hidden="true"></span>
 								Datos en bruto

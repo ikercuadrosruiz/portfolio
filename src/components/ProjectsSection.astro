@@ -21,12 +21,12 @@ const firstQuery = BPI_DEMO_QUERIES[0];
             </h2>
         </div>
 
-        <div class="projects-filter" role="tablist" aria-label="Filtrar proyectos por área">
+        <div class="projects-filter" role="group" aria-label="Filtrar proyectos por área">
             <button
                 type="button"
                 class="filter-btn mono is-active"
                 data-project-filter="all"
-                aria-selected="true"
+                aria-pressed="true"
             >
                 Todos
             </button>
@@ -34,7 +34,7 @@ const firstQuery = BPI_DEMO_QUERIES[0];
                 type="button"
                 class="filter-btn mono"
                 data-project-filter="ai"
-                aria-selected="false"
+                aria-pressed="false"
             >
                 IA &amp; Datos
             </button>
@@ -42,7 +42,7 @@ const firstQuery = BPI_DEMO_QUERIES[0];
                 type="button"
                 class="filter-btn mono"
                 data-project-filter="web"
-                aria-selected="false"
+                aria-pressed="false"
             >
                 Desarrollo Web
             </button>
@@ -404,7 +404,7 @@ const firstQuery = BPI_DEMO_QUERIES[0];
             filterBtns.forEach((b) => {
                 const active = b === btn;
                 b.classList.toggle('is-active', active);
-                b.setAttribute('aria-selected', String(active));
+                b.setAttribute('aria-pressed', String(active));
             });
 
             projectItems.forEach((el) => {
