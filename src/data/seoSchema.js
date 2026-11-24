@@ -8,9 +8,8 @@ export function buildPortfolioSchema(siteUrl) {
 
     const projectItems = [
         {
-            '@type': 'SoftwareApplication',
+            '@type': 'CreativeWork',
             name: 'BPI València — Buscador Plenario Inteligente',
-            applicationCategory: 'BusinessApplication',
             description:
                 'Sistema de transcripción, diarización y agente conversacional con IA para consultar en segundos los plenos del Ayuntamiento de València.',
             creator: { '@id': personId },
@@ -25,7 +24,7 @@ export function buildPortfolioSchema(siteUrl) {
             inLanguage: 'es',
         },
         ...WEB_PROJECTS.map((project) => ({
-            '@type': project.id === 'valocoach' ? 'SoftwareApplication' : 'WebSite',
+            '@type': 'CreativeWork',
             name: project.title,
             description: project.description,
             url: project.url,
