@@ -157,10 +157,11 @@ mm.add(
     {
         isDesktop: '(min-width: 769px)',
         isMobile: '(max-width: 768px)',
+        canPinAct3: '(min-width: 769px) and (min-height: 560px)',
         reduceMotion: '(prefers-reduced-motion: reduce)',
     },
     (context) => {
-        const { isDesktop, reduceMotion } = context.conditions;
+        const { isDesktop, canPinAct3, reduceMotion } = context.conditions;
 
         // Si el usuario tiene activado "Reducir movimiento" en su sistema, desactivamos
         // el scrollytelling fijado y dejamos la página estática, legible y accesible.
@@ -281,90 +282,179 @@ mm.add(
                 3.37
             );
 
-        // --- ACTO 3: Diseño Web (Expansión simétrica por escala en desktop y móvil + entrada de retícula) ---
-        const tlAct3 = gsap.timeline({
-            scrollTrigger: {
+        // --- ACTO 3: Diseño Web ---
+        // Escritorio con altura suficiente: tarjeta fijada (pin) con expansión simétrica a 100svh.
+        // Móvil (vertical u horizontal): flujo natural (height: auto) a tamaño real sin recortes.
+        if (canPinAct3) {
+            const tlAct3 = gsap.timeline({
+                scrollTrigger: {
+                    trigger: '.act-3',
+                    start: 'top top',
+                    end: '+=200%',
+                    pin: true,
+                    scrub: 0.7,
+                    onToggle: (self) => {
+                        act3Active = self.isActive;
+                        if (self.isActive) {
+                            fpsFrames = 0;
+                            fpsLastSample = performance.now();
+                            updateInspectMetrics();
+                        }
+                    },
+                },
+            });
+
+            tlAct3
+                .fromTo(
+                    '.ui-frame',
+                    {
+                        scale: 0.84,
+                        borderRadius: '24px',
+                        boxShadow: '0 24px 60px rgba(17, 17, 17, 0.07)',
+                    },
+                    {
+                        scale: 1,
+                        borderRadius: '0px',
+                        boxShadow: '0 0px 0px rgba(17, 17, 17, 0)',
+                        duration: 0.45,
+                        ease: 'none',
+                    },
+                    0
+                )
+                .to(
+                    '.ui-header',
+                    {
+                        opacity: 1,
+                        y: 0,
+                        duration: 0.3,
+                        ease: 'power2.out',
+                    },
+                    0.22
+                )
+                .to(
+                    '.ui-block',
+                    {
+                        opacity: 1,
+                        y: 0,
+                        stagger: 0.09,
+                        duration: 0.35,
+                        ease: 'power2.out',
+                    },
+                    0.32
+                )
+                .to(
+                    '.ui-mini-bar',
+                    {
+                        scaleY: 1,
+                        stagger: 0.04,
+                        duration: 0.35,
+                        ease: 'power2.out',
+                    },
+                    0.45
+                )
+                .to(
+                    '.ui-bar-fill',
+                    {
+                        scaleX: (_, el) =>
+                            parseFloat(
+                                getComputedStyle(el).getPropertyValue('--target-scale')
+                            ) || 1,
+                        stagger: 0.06,
+                        duration: 0.38,
+                        ease: 'power2.out',
+                    },
+                    0.5
+                )
+                .to({}, { duration: 0.25 });
+        } else {
+            // Móvil y pantallas cortas: entrada elegante de tarjeta + revelación fluida por bloque
+            ScrollTrigger.create({
                 trigger: '.act-3',
-                start: 'top top',
-                end: isDesktop ? '+=200%' : '+=145%',
-                pin: true,
-                scrub: 0.7,
+                start: 'top bottom',
+                end: 'bottom top',
                 onToggle: (self) => {
                     act3Active = self.isActive;
                     if (self.isActive) {
                         fpsFrames = 0;
                         fpsLastSample = performance.now();
-                        updateInspectMetrics();
                     }
                 },
-            },
-        });
+            });
 
-        tlAct3.fromTo(
-            '.ui-frame',
-            {
-                scale: isDesktop ? 0.84 : 0.88,
-                borderRadius: isDesktop ? '24px' : '20px',
-                boxShadow: '0 24px 60px rgba(17, 17, 17, 0.07)',
-            },
-            {
-                scale: 1,
-                borderRadius: '0px',
-                boxShadow: '0 0px 0px rgba(17, 17, 17, 0)',
-                duration: 0.45,
-                ease: 'none',
-            },
-            0
-        );
-
-        tlAct3
-            .to(
-                '.ui-header',
+            gsap.fromTo(
+                '.ui-frame',
                 {
-                    opacity: 1,
-                    y: 0,
-                    duration: 0.3,
-                    ease: 'power2.out',
+                    scale: 0.94,
+                    borderRadius: '22px',
+                    boxShadow: '0 18px 46px rgba(17, 17, 17, 0.08)',
                 },
-                isDesktop ? 0.22 : 0.2
-            )
-            .to(
-                '.ui-block',
                 {
-                    opacity: 1,
-                    y: 0,
-                    stagger: 0.09,
-                    duration: 0.35,
-                    ease: 'power2.out',
-                },
-                isDesktop ? 0.32 : 0.28
-            )
-            .to(
-                '.ui-mini-bar',
-                {
-                    scaleY: 1,
-                    stagger: 0.04,
-                    duration: 0.35,
-                    ease: 'power2.out',
-                },
-                isDesktop ? 0.45 : 0.38
-            )
-            .to(
-                '.ui-bar-fill',
-                {
-                    scaleX: (_, el) =>
-                        parseFloat(
-                            getComputedStyle(el).getPropertyValue('--target-scale')
-                        ) || 1,
-                    stagger: 0.06,
-                    duration: 0.38,
-                    ease: 'power2.out',
-                },
-                isDesktop ? 0.5 : 0.44
+                    scale: 1,
+                    borderRadius: '0px',
+                    boxShadow: '0 0px 0px rgba(17, 17, 17, 0)',
+                    ease: 'none',
+                    scrollTrigger: {
+                        trigger: '.act-3',
+                        start: 'top 92%',
+                        end: 'top 22%',
+                        scrub: true,
+                    },
+                }
             );
 
-        // Pequeño respiro al final del Acto 3 para interactuar con el comparador y los modos de vista
-        tlAct3.to({}, { duration: 0.25 });
+            gsap.to('.ui-header', {
+                opacity: 1,
+                y: 0,
+                duration: 0.45,
+                ease: 'power2.out',
+                scrollTrigger: {
+                    trigger: '.ui-header',
+                    start: 'top 88%',
+                    toggleActions: 'play none none reverse',
+                },
+            });
+
+            gsap.utils.toArray('.ui-block').forEach((block) => {
+                gsap.to(block, {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.45,
+                    ease: 'power2.out',
+                    scrollTrigger: {
+                        trigger: block,
+                        start: 'top 88%',
+                        toggleActions: 'play none none reverse',
+                    },
+                });
+            });
+
+            gsap.to('.ui-mini-bar', {
+                scaleY: 1,
+                stagger: 0.05,
+                duration: 0.4,
+                ease: 'power2.out',
+                scrollTrigger: {
+                    trigger: '.ui-block--product',
+                    start: 'top 80%',
+                    toggleActions: 'play none none reverse',
+                },
+            });
+
+            gsap.to('.ui-bar-fill', {
+                scaleX: (_, el) =>
+                    parseFloat(
+                        getComputedStyle(el).getPropertyValue('--target-scale')
+                    ) || 1,
+                stagger: 0.08,
+                duration: 0.45,
+                ease: 'power2.out',
+                scrollTrigger: {
+                    trigger: '.ui-block--perf',
+                    start: 'top 82%',
+                    toggleActions: 'play none none reverse',
+                },
+            });
+        }
 
         // --- ACTO 4: Judo (Marco GTA expandible simétrico + Canvas Scrubbing) ---
         if (judoScrubber) {

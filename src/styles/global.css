@@ -535,14 +535,23 @@ body {
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
     align-items: center;
     gap: 0.35rem;
 }
 
+.ui-mini-bar-track {
+    flex: 1;
+    width: 100%;
+    min-height: 0;
+    display: flex;
+    align-items: flex-end;
+}
+
 .ui-mini-col .mono {
     font-size: 0.64rem;
+    line-height: 1;
     color: var(--muted);
+    flex-shrink: 0;
 }
 
 .ui-mini-col.is-peak .mono {
@@ -1628,14 +1637,30 @@ body {
         padding: 4.5rem 1.35rem 2rem;
     }
 
+    /* Acto 3 en móvil: flujo natural sin jaula de 100svh (tamaño real y legible en cualquier pantalla) */
+    .act-3 {
+        height: auto;
+        min-height: 100svh;
+        overflow: visible;
+        align-items: stretch;
+        padding: 1.5rem 0 2.5rem;
+    }
+
     .ui-frame {
-        padding: 4.15rem 1.05rem 1.1rem;
-        grid-template-rows: auto minmax(0, 1.32fr) minmax(0, 0.88fr);
-        gap: 0.7rem;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        padding: 4.5rem 1.15rem 2.25rem;
+        gap: 1rem;
+        overflow: visible;
+    }
+
+    .ui-header {
+        padding-bottom: 0.85rem;
     }
 
     .ui-title {
-        font-size: clamp(1.15rem, 5.2vw, 1.5rem);
+        font-size: clamp(1.35rem, 6vw, 1.75rem);
     }
 
     .ui-header-controls {
@@ -1643,74 +1668,89 @@ body {
     }
 
     .ui-block {
-        padding: 0.85rem 0.95rem;
-        gap: 0.45rem;
+        padding: 1.15rem;
+        gap: 0.75rem;
+        min-height: auto;
+        overflow: visible;
     }
 
-    .ui-block--product,
-    .ui-block--perf {
-        grid-column: 1 / -1;
-    }
-
-    .ui-block--product .ui-block-lead .ui-desc {
-        display: none;
+    .ui-block-top {
+        gap: 0.5rem;
     }
 
     .ui-card-title {
-        font-size: 1rem;
+        font-size: 1.08rem;
+    }
+
+    .ui-desc {
+        font-size: 0.9rem;
     }
 
     .ui-demo-stage {
-        padding: 0.75rem 0.85rem 0.85rem;
-        align-items: center;
+        padding: 1rem;
+        align-items: stretch;
     }
 
     .ui-demo-clear {
         grid-template-columns: 1fr;
-        gap: 0.65rem;
+        gap: 1rem;
     }
 
     .ui-demo-headline {
-        font-size: 1.02rem;
+        font-size: 1.18rem;
     }
 
     .ui-demo-action {
-        font-size: 0.76rem;
+        font-size: 0.85rem;
     }
 
     .ui-mini-bars {
-        height: 62px;
-        min-height: 62px;
-        max-height: 62px;
+        height: 92px;
+        min-height: 92px;
+        max-height: 92px;
         padding-top: 0.15rem;
-        gap: 0.4rem;
-    }
-
-    .ui-mini-col {
-        gap: 0.25rem;
+        gap: 0.45rem;
     }
 
     .ui-mini-col .mono {
-        font-size: 0.6rem;
-        line-height: 1;
+        font-size: 0.64rem;
+    }
+
+    .ui-demo-raw {
+        font-size: 0.68rem;
+        gap: 0.45rem;
+    }
+
+    .ui-raw-line span:nth-child(n + 4) {
+        display: none;
     }
 
     .ui-score-num {
-        font-size: clamp(1.6rem, 7.5vw, 2.1rem);
-    }
-
-    .ui-block--perf .ui-desc {
-        font-size: 0.8rem;
-        line-height: 1.35;
+        font-size: 2.15rem;
     }
 
     .ui-bars {
-        gap: 0.42rem;
+        gap: 0.65rem;
+        margin-top: 0.35rem;
     }
 
-    .ui-block--tokens,
-    .ui-block--pipeline {
-        display: none;
+    .ui-swatch-chip {
+        min-height: 48px;
+    }
+
+    .ui-pipeline-steps {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+    }
+
+    .ui-step {
+        padding: 0.9rem 1rem;
+    }
+
+    .ui-step-arrow {
+        justify-self: center;
+        transform: rotate(90deg);
+        line-height: 1;
     }
 
     .judo-frame {
@@ -1737,7 +1777,7 @@ body {
 }
 
 /* Teléfonos girados en horizontal (landscape con poca altura) */
-@media (max-height: 520px) and (orientation: landscape) {
+@media (max-height: 559px) and (orientation: landscape) {
     .navbar {
         padding: 0.7rem 1.25rem;
     }
@@ -1751,14 +1791,24 @@ body {
         height: 76vh;
     }
 
+    .act-3 {
+        height: auto;
+        min-height: 100svh;
+        overflow: visible;
+        align-items: stretch;
+        padding: 1rem 0 2rem;
+    }
+
     .ui-frame {
-        padding: 3.25rem 1.25rem 0.85rem;
-        grid-template-rows: auto minmax(0, 1fr);
-        gap: 0.65rem;
+        height: auto;
+        padding: 3.5rem 1.5rem 2rem;
+        grid-template-rows: auto auto auto;
+        gap: 0.85rem;
+        overflow: visible;
     }
 
     .ui-header {
-        padding-bottom: 0.45rem;
+        padding-bottom: 0.6rem;
     }
 
     .ui-header-controls {
@@ -1766,7 +1816,12 @@ body {
     }
 
     .ui-title {
-        font-size: 1.25rem;
+        font-size: 1.4rem;
+    }
+
+    .ui-block {
+        min-height: auto;
+        overflow: visible;
     }
 
     .ui-block--product {
@@ -1777,13 +1832,12 @@ body {
         grid-column: 8 / -1;
     }
 
-    .ui-block--product .ui-block-lead .ui-desc {
-        display: none;
+    .ui-block--tokens {
+        grid-column: 1 / 6;
     }
 
-    .ui-block--tokens,
     .ui-block--pipeline {
-        display: none;
+        grid-column: 6 / -1;
     }
 
     .judo-overlay {
